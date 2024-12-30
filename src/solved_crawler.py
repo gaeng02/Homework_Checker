@@ -14,6 +14,18 @@ def get_solved (user_id) :
 
     data = json.loads(response.text)
 
-    return soup
+    return data
 
 
+def preprocessing (data) :
+    
+    stats = []
+    for level in range (31) :
+        stats.append(data[level]["solved"])
+
+    tier = [0] * 6
+    # Bronze, Silver, Gold, Platinum, Diamond, Ruby
+    for level in range (1, 31) :
+        tier[(level-1) // 5] += stats[level]
+
+    return tier
