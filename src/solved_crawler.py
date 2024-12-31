@@ -1,3 +1,4 @@
+import csv
 import json
 import requests
 
@@ -29,3 +30,18 @@ def preprocessing (data) :
         tier[(level-1) // 5] += stats[level]
 
     return tier
+
+
+def save (user_id, data) :
+
+    file = "../info.csv"
+    
+    with open(file, mode = "r", encoding = "utf-8") as f :
+        reader = csv.reader(f)
+        rows = list(reader)
+
+    rows.append(data)
+
+    with open(file, mode = "w", encoding = "utf-8", newline = "") as f :
+        writer = csv.writer(f)
+        writer.writerows(rows)
