@@ -1,7 +1,12 @@
-def load () :
+import os
 
+# Create / Read / Update / Delete
+
+# file
+def Create_file () :
     
 
+    
 def save (user_id, data) :
 
     file = "../info.csv"
@@ -13,5 +18,6 @@ def save (user_id, data) :
     rows.append(data)
 
     with open(file, mode = "w", encoding = "utf-8", newline = "") as f :
+
         writer = csv.writer(f)
         writer.writerows(rows)
